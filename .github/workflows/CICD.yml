@@ -26,3 +26,4 @@ jobs:
         cache: maven
     - name: Compile with Maven
       run: mvn compile
+
