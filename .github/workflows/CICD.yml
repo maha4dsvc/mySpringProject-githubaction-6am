@@ -75,10 +75,17 @@ jobs:
     - name: package with Maven
       run: mvn package
 
-    - name: install unzip
-      run: sudo apt-get install unzip -y
+    - name: Upload WAR artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: my-artifact
+        path: target/*.war
 
-      
+    # install   unzip on runner 
+    - name: Install unzip
+      run: sudo apt-get update && sudo apt-get install -y unz
+
+
     - uses: actions/checkout@v6
       with:
         # Disabling shallow clones is recommended for improving the relevancy of reporting
